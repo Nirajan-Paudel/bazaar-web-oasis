@@ -14,6 +14,7 @@ export interface Product {
   rating: number;
   vendorName: string;
   category: string;
+  description?: string; // Added description as optional
 }
 
 interface ProductCardProps {

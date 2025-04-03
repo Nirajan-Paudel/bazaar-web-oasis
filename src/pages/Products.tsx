@@ -16,8 +16,8 @@ export default function ProductsPage() {
     // Check for search query
     if (searchQuery) {
       const filteredProducts = mockProducts.filter(product => 
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()))
       );
       
       setProducts(filteredProducts);

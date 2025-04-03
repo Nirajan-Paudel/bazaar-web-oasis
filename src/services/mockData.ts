@@ -1,4 +1,3 @@
-
 import { Product } from "@/components/ProductCard";
 
 // Mock product data
@@ -10,7 +9,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     rating: 4.8,
     vendorName: "CeramicArtistry",
-    category: "home"
+    category: "home",
+    description: "A beautiful handmade ceramic mug with a vintage-inspired design."
   },
   {
     id: "2",
@@ -19,7 +19,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1594224457860-23fdb4e235fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     rating: 4.9,
     vendorName: "WoodWorks",
-    category: "kitchen"
+    category: "kitchen",
+    description: "A durable and elegant wooden cutting board, perfect for your kitchen."
   },
   {
     id: "3",
@@ -28,7 +29,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1608263153703-caa6b0fd7c7c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80",
     rating: 4.7,
     vendorName: "AromaHouse",
-    category: "home"
+    category: "home",
+    description: "A natural soy candle with a delightful scent to create a cozy atmosphere."
   },
   {
     id: "4",
@@ -37,7 +39,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1627123424574-724758594e93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80",
     rating: 4.9,
     vendorName: "LeatherCraft",
-    category: "accessories"
+    category: "accessories",
+    description: "A premium handmade leather wallet with multiple card slots and pockets."
   },
   {
     id: "5",
@@ -46,7 +49,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1622560480605-d83c853bc5c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     rating: 4.6,
     vendorName: "EcoTextiles",
-    category: "accessories"
+    category: "accessories",
+    description: "An eco-friendly tote bag made from 100% organic cotton."
   },
   {
     id: "6",
@@ -55,7 +59,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1582582621959-48d27397dc69?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     rating: 4.8,
     vendorName: "ModernPrints",
-    category: "decor"
+    category: "decor",
+    description: "A minimalist art print that adds a touch of elegance to any room."
   },
   {
     id: "7",
@@ -64,7 +69,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1630019852942-f89202989a59?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
     rating: 5.0,
     vendorName: "SilverSmith",
-    category: "jewelry"
+    category: "jewelry",
+    description: "Elegant handcrafted silver earrings that complement any outfit."
   },
   {
     id: "8",
@@ -73,7 +79,8 @@ export const mockProducts: Product[] = [
     image: "https://images.unsplash.com/photo-1544247341-e841389a3502?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     rating: 4.7,
     vendorName: "PaperGoods",
-    category: "stationery"
+    category: "stationery",
+    description: "A premium leather-bound notebook with high-quality paper."
   }
 ];
 

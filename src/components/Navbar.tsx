@@ -50,8 +50,8 @@ export default function Navbar() {
   useEffect(() => {
     if (searchQuery.trim().length > 2) {
       const results = mockProducts.filter(product => 
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+        product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (product.description && product.description.toLowerCase().includes(searchQuery.toLowerCase()))
       ).slice(0, 5);
       
       setSearchResults(results);
