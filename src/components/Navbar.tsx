@@ -8,12 +8,16 @@ import {
   User,
   Menu,
   X,
+  Heart,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { useCart } from "@/contexts/CartContext";
+import { Badge } from "@/components/ui/badge";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const { getCartCount } = useCart();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -22,6 +26,8 @@ export default function Navbar() {
     console.log("Searching for:", searchQuery);
     // In a real app, we would navigate to search results page
   };
+
+  const cartCount = getCartCount();
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -58,9 +64,19 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="relative">
+            <Link to="/wishlist">
+              <Heart className="h-5 w-5" />
+            </Link>
+          </Button>
+          <Button variant="ghost" size="icon" className="relative">
             <Link to="/cart">
               <ShoppingBag className="h-5 w-5" />
+              {cartCount > 0 && (
+                <Badge className="absolute -right-1 -top-1 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                  {cartCount}
+                </Badge>
+              )}
             </Link>
           </Button>
           <Button variant="ghost" size="icon">

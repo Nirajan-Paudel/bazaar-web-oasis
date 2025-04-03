@@ -13,11 +13,15 @@ import {
 import { Heart, Minus, Plus, ShoppingBag, Star } from "lucide-react";
 import { getProductById, featuredProducts } from "@/services/mockData";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import { useCart } from "@/contexts/CartContext";
+import { useWishlist } from "@/contexts/WishlistContext";
 
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState(id ? getProductById(id) : undefined);
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+  const { toggleLike, isLiked } = useWishlist();
 
   const increaseQuantity = () => setQuantity((prev) => prev + 1);
   const decreaseQuantity = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
@@ -28,6 +32,18 @@ export default function ProductDetails() {
       setProduct(foundProduct);
     }
   }, [id]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product, quantity);
+    }
+  };
+
+  const handleToggleLike = () => {
+    if (product) {
+      toggleLike(product);
+    }
+  };
 
   if (!product) {
     return (
@@ -99,12 +115,14 @@ export default function ProductDetails() {
           </div>
 
           <div className="flex gap-4">
-            <Button className="flex-1" size="lg">
+            <Button className="flex-1" size="lg" onClick={handleAddToCart}>
               <ShoppingBag className="mr-2 h-5 w-5" />
               Add to Cart
             </Button>
-            <Button variant="outline" size="lg">
-              <Heart className="h-5 w-5" />
+            <Button variant="outline" size="lg" onClick={handleToggleLike}>
+              <Heart 
+                className={`h-5 w-5 ${isLiked(product.id) ? "fill-red-500 text-red-500" : ""}`} 
+              />
             </Button>
           </div>
 

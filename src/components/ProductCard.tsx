@@ -2,7 +2,9 @@
 import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Heart, Star } from "lucide-react";
+import { Heart, ShoppingBag, Star } from "lucide-react";
+import { useWishlist } from "@/contexts/WishlistContext";
+import { useCart } from "@/contexts/CartContext";
 
 export interface Product {
   id: string;
@@ -20,6 +22,20 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const { id, title, price, image, rating, vendorName } = product;
+  const { toggleLike, isLiked } = useWishlist();
+  const { addToCart } = useCart();
+
+  const handleToggleLike = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleLike(product);
+  };
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    addToCart(product);
+  };
 
   return (
     <Card className="product-card overflow-hidden transition-all hover:shadow-lg">
@@ -50,9 +66,19 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0 flex items-center justify-between gap-2">
-        <Button className="w-full">Add to Cart</Button>
-        <Button variant="outline" size="icon" className="flex-shrink-0">
-          <Heart className="h-4 w-4" />
+        <Button className="w-full" onClick={handleAddToCart}>
+          <ShoppingBag className="mr-2 h-4 w-4" />
+          Add to Cart
+        </Button>
+        <Button 
+          variant="outline" 
+          size="icon" 
+          className="flex-shrink-0" 
+          onClick={handleToggleLike}
+        >
+          <Heart 
+            className={`h-4 w-4 ${isLiked(id) ? "fill-red-500 text-red-500" : ""}`} 
+          />
         </Button>
       </CardFooter>
     </Card>

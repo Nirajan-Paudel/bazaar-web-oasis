@@ -9,32 +9,43 @@ import NotFound from "./pages/NotFound";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
 import Auth from "./pages/Auth";
+import Wishlist from "./pages/Wishlist";
+import Products from "./pages/Products";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { CartProvider } from "./contexts/CartContext";
+import { WishlistProvider } from "./contexts/WishlistContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/product/:id" element={<ProductDetails />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/account" element={<Auth />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </BrowserRouter>
+      <CartProvider>
+        <WishlistProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <div className="flex min-h-screen flex-col">
+              <Navbar />
+              <main className="flex-1">
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/product/:id" element={<ProductDetails />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/account" element={<Auth />} />
+                  <Route path="/wishlist" element={<Wishlist />} />
+                  <Route path="/trending" element={<Products />} />
+                  <Route path="/products" element={<Products />} />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </BrowserRouter>
+        </WishlistProvider>
+      </CartProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );

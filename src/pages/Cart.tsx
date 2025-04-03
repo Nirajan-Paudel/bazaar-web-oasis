@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,30 +10,10 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import { mockProducts } from "@/services/mockData";
-
-// For demo purposes, we'll start with 2 items in the cart
-const initialCartItems = [
-  { product: mockProducts[0], quantity: 1 },
-  { product: mockProducts[3], quantity: 2 },
-];
+import { useCart } from "@/contexts/CartContext";
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState(initialCartItems);
-
-  const updateQuantity = (id: string, newQuantity: number) => {
-    if (newQuantity < 1) return;
-    
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.product.id === id ? { ...item, quantity: newQuantity } : item
-      )
-    );
-  };
-
-  const removeItem = (id: string) => {
-    setCartItems((prev) => prev.filter((item) => item.product.id !== id));
-  };
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
 
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.product.price * item.quantity,
@@ -90,7 +69,7 @@ export default function CartPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => removeItem(item.product.id)}
+                      onClick={() => removeFromCart(item.product.id)}
                     >
                       <Trash2 className="h-4 w-4 text-muted-foreground" />
                     </Button>
