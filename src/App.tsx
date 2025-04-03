@@ -11,6 +11,9 @@ import Cart from "./pages/Cart";
 import Auth from "./pages/Auth";
 import Wishlist from "./pages/Wishlist";
 import Products from "./pages/Products";
+import Categories from "./pages/Categories";
+import Deals from "./pages/Deals";
+import Sellers from "./pages/Sellers";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { CartProvider } from "./contexts/CartContext";
@@ -37,6 +40,9 @@ const App = () => (
                   <Route path="/wishlist" element={<Wishlist />} />
                   <Route path="/trending" element={<Products />} />
                   <Route path="/products" element={<Products />} />
+                  <Route path="/categories" element={<Categories />} />
+                  <Route path="/deals" element={<Deals />} />
+                  <Route path="/sellers" element={<Sellers />} />
                   {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
                   <Route path="*" element={<NotFound />} />
                 </Routes>
